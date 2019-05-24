@@ -5,10 +5,10 @@ import Main from './views/Main.vue'
 import Table from './views/nav1/Table.vue'
 import Form from './views/nav1/Form.vue'
 import user from './views/nav1/user.vue'
-import Page4 from './views/nav2/Page4.vue'
-import Page5 from './views/nav2/Page5.vue'
-import Page6 from './views/nav3/Page6.vue'
-import echarts from './views/charts/echarts.vue'
+import Product from './views/nav2/Product.vue'
+import ProductType from './views/nav2/ProductType.vue'
+import Person from './views/nav3/Person.vue'
+// import echarts from './views/charts/echarts.vue'
 
 let routes = [
     {
@@ -27,7 +27,7 @@ let routes = [
     {
         path: '/',
         component: Home,
-        name: '导航一',
+        name: '订单管理',
         iconCls: 'el-icon-message',//图标样式class
         children: [
             { path: '/main', component: Main, name: '主页', hidden: true },
@@ -39,11 +39,11 @@ let routes = [
     {
         path: '/',
         component: Home,
-        name: '导航二',
+        name: '商品管理',
         iconCls: 'fa fa-id-card-o',
         children: [
-            { path: '/page4', component: Page4, name: '页面4' },
-            { path: '/page5', component: Page5, name: '页面5' }
+            { path: '/product', component: Product, name: '商品管理' },
+            { path: '/productType', component: ProductType, name: '商品类型' }
         ]
     },
     {
@@ -53,18 +53,18 @@ let routes = [
         iconCls: 'fa fa-address-card',
         leaf: true,//只有一个节点
         children: [
-            { path: '/page6', component: Page6, name: '导航三' }
+            { path: '/person', component: Person, name: '用户管理' }
         ]
     },
-    {
-        path: '/',
-        component: Home,
-        name: 'Charts',
-        iconCls: 'fa fa-bar-chart',
-        children: [
-            { path: '/echarts', component: echarts, name: 'echarts' }
-        ]
-    },
+    // {
+    //     path: '/',
+    //     component: Home,
+    //     name: 'Charts',
+    //     iconCls: 'fa fa-bar-chart',
+    //     children: [
+    //         { path: '/echarts', component: echarts, name: 'echarts' }
+    //     ]
+    // },
     {
         path: '*',
         hidden: true,

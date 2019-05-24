@@ -23,8 +23,8 @@
       return {
         logining: false,
         ruleForm2: {
-          account: 'admin',
-          checkPass: '123456'
+          account: '13539402612',
+          checkPass: 'a12345'
         },
         rules2: {
           account: [
@@ -50,19 +50,30 @@
             //_this.$router.replace('/table');
             this.logining = true;
             //NProgress.start();
-            var loginParams = { username: this.ruleForm2.account, password: this.ruleForm2.checkPass };
+            let loginParams = { phone: this.ruleForm2.account, password: this.ruleForm2.checkPass };
+            // this.$http({
+            //   method: 'post',
+            //   url: '/userInfo/login'
+            // }).then(res =>{
+            //   console.log(res)
+            // }).catch(e=>{
+            //   console.log(e)
+            // })
+            //
+            // return;
             requestLogin(loginParams).then(data => {
               this.logining = false;
               //NProgress.done();
-              let { msg, code, user } = data;
-              if (code !== 200) {
+              console.log(data)
+              let { message, httpCode} = data;
+              if (httpCode !== 200) {
                 this.$message({
-                  message: msg,
+                  message: message,
                   type: 'error'
                 });
               } else {
-                sessionStorage.setItem('user', JSON.stringify(user));
-                this.$router.push({ path: '/table' });
+                sessionStorage.setItem('user', JSON.stringify(data.data));
+                this.$router.push({ path: '/person' });
               }
             });
           } else {
